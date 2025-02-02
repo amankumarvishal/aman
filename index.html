@@ -1,32 +1,126 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Typing Practice</title>
-  <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Typing Master</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-  <div class="container">
-    <h1>Typing Practice</h1>
-    <p>Start typing the text below:</p>
-    
-    <div id="text-to-type">
-      <span id="text">The quick brown fox jumps over the lazy dog.</span>
+    <div class="theme-switcher">
+        <i class="fas fa-paint-brush"></i>
+        <div class="theme-options">
+            <div class="theme-option" data-theme="default">Default</div>
+            <div class="theme-option" data-theme="dark">Dark</div>
+            <div class="theme-option" data-theme="neon">Neon</div>
+            <div class="theme-option" data-theme="forest">Forest</div>
+        </div>
     </div>
 
-    <textarea id="user-input" placeholder="Start typing..." oninput="checkInput()"></textarea>
-    
-    <div id="status">
-      <p>Time: <span id="timer">0</span>s</p>
-      <p>Accuracy: <span id="accuracy">100%</span></p>
-      <p>Speed: <span id="wpm">0</span> WPM</p>
+    <div class="container">
+        <div class="profile-section" id="profileSection">
+            <div class="login-form" id="loginForm">
+                <input type="text" id="username" placeholder="Enter username">
+                <button id="loginBtn">Login</button>
+            </div>
+            <div class="user-profile hidden" id="userProfile">
+                <span class="username"></span>
+                <div class="user-stats">
+                    <div>Best WPM: <span id="bestWpm">0</span></div>
+                    <div>Average WPM: <span id="avgWpm">0</span></div>
+                    <div>Tests Completed: <span id="testsCompleted">0</span></div>
+                </div>
+            </div>
+        </div>
+
+        <h1>⌨️ Advanced Typing Master</h1>
+        
+        <div class="mode-selector">
+            <button class="mode-btn active" data-mode="practice">Practice</button>
+            <button class="mode-btn" data-mode="challenge">Challenge</button>
+            <button class="mode-btn" data-mode="custom">Custom</button>
+        </div>
+
+        <div class="level-selector">
+            <button class="level-btn active" data-level="easy">Easy</button>
+            <button class="level-btn" data-level="medium">Medium</button>
+            <button class="level-btn" data-level="hard">Hard</button>
+            <button class="level-btn" data-level="expert">Expert</button>
+        </div>
+
+        <div class="custom-text-section hidden">
+            <textarea id="customText" placeholder="Enter your custom text for practice..."></textarea>
+            <button id="useCustomText">Use This Text</button>
+        </div>
+
+        <div class="stats">
+            <div class="stat-box">
+                <span>WPM:</span>
+                <span id="wpm">0</span>
+            </div>
+            <div class="stat-box">
+                <span>Accuracy:</span>
+                <span id="accuracy">0%</span>
+            </div>
+            <div class="stat-box">
+                <span>Time:</span>
+                <span id="time">60s</span>
+            </div>
+            <div class="stat-box">
+                <span>Errors:</span>
+                <span id="errors">0</span>
+            </div>
+        </div>
+
+        <div class="detailed-stats hidden">
+            <div class="chart-container">
+                <canvas id="wpmChart"></canvas>
+            </div>
+            <div class="error-analysis">
+                <h3>Common Mistakes</h3>
+                <ul id="commonMistakes"></ul>
+            </div>
+        </div>
+
+        <div class="text-display" id="textDisplay"></div>
+        
+        <textarea id="textInput" rows="3" placeholder="Start typing here..."></textarea>
+        
+        <div class="control-buttons">
+            <button id="resetBtn" class="control-btn"><i class="fas fa-redo"></i> Reset</button>
+            <button id="showStatsBtn" class="control-btn"><i class="fas fa-chart-bar"></i> Show Stats</button>
+            <button id="shareBtn" class="control-btn"><i class="fas fa-share"></i> Share</button>
+        </div>
+
+        <div class="leaderboard hidden">
+            <h2>Leaderboard</h2>
+            <div class="leaderboard-filters">
+                <select id="leaderboardMode">
+                    <option value="daily">Daily</option>
+                    <option value="weekly">Weekly</option>
+                    <option value="allTime">All Time</option>
+                </select>
+            </div>
+            <table id="leaderboardTable">
+                <thead>
+                    <tr>
+                        <th>Rank</th>
+                        <th>User</th>
+                        <th>WPM</th>
+                        <th>Accuracy</th>
+                    </tr>
+                </thead>
+                <tbody id="leaderboardBody"></tbody>
+            </table>
+        </div>
     </div>
 
-    <button onclick="startPractice()">Start</button>
-  </div>
+    <div class="keyboard-layout">
+        <div class="keyboard-row" id="keyboardDisplay"></div>
+    </div>
 
-  <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>

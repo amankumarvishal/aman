@@ -126,19 +126,22 @@ body {
 .mode-selector {
     display: flex;
     justify-content: center;
-    gap: 1rem;
-    margin-bottom: 1rem;
+    gap: 10px;
+    margin: 15px 0;
 }
 
 .mode-btn {
-    padding: 0.8rem 1.5rem;
+    padding: 8px 16px;
     border: none;
-    border-radius: 25px;
-    font-size: 1rem;
+    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.2);
+    color: var(--text-color);
     cursor: pointer;
     transition: all 0.3s ease;
-    background: var(--background-color);
-    color: var(--text-color);
+}
+
+.mode-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
 }
 
 .mode-btn.active {
@@ -146,34 +149,37 @@ body {
     color: white;
 }
 
-h1 {
-    text-align: center;
-    color: var(--text-color);
-    margin-bottom: 2rem;
-    font-size: 2.5rem;
-}
-
 .level-selector {
     display: flex;
     justify-content: center;
-    gap: 1rem;
-    margin-bottom: 2rem;
+    gap: 10px;
+    margin: 15px 0;
     flex-wrap: wrap;
 }
 
 .level-btn {
-    padding: 0.8rem 1.5rem;
+    padding: 8px 16px;
     border: none;
-    border-radius: 25px;
-    font-size: 1rem;
+    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.2);
+    color: var(--text-color);
     cursor: pointer;
     transition: all 0.3s ease;
+}
+
+.level-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
 }
 
 .level-btn[data-level="easy"] { background-color: var(--success-color); color: white; }
 .level-btn[data-level="medium"] { background-color: var(--warning-color); color: black; }
 .level-btn[data-level="hard"] { background-color: var(--error-color); color: white; }
 .level-btn[data-level="expert"] { background-color: #6f42c1; color: white; }
+
+.level-btn.active {
+    background: var(--primary-color);
+    color: white;
+}
 
 .level-btn:hover {
     transform: translateY(-2px);
@@ -233,13 +239,51 @@ h1 {
 }
 
 .text-display {
-    background: var(--background-color);
-    padding: 1rem;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 20px;
     border-radius: 10px;
-    margin-bottom: 1rem;
-    font-size: 1.2rem;
+    margin: 20px 0;
+    font-size: 1.2em;
     line-height: 1.6;
     min-height: 100px;
+    white-space: pre-wrap;
+    word-break: break-word;
+}
+
+.text-display span {
+    position: relative;
+    transition: color 0.2s;
+}
+
+.text-display .correct {
+    color: var(--success-color);
+}
+
+.text-display .incorrect {
+    color: var(--error-color);
+    text-decoration: underline;
+}
+
+.text-display .remaining {
+    color: var(--text-color);
+    opacity: 0.7;
+}
+
+#textInput {
+    width: 100%;
+    padding: 15px;
+    margin: 10px 0;
+    border: 2px solid var(--primary-color);
+    border-radius: 8px;
+    font-size: 1.1em;
+    background: rgba(255, 255, 255, 0.95);
+    resize: none;
+}
+
+#textInput:focus {
+    outline: none;
+    border-color: var(--secondary-color);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
 }
 
 .correct { color: var(--success-color); }
